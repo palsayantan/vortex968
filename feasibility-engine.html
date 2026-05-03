@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/colors/sky-blue.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VORTEX Product Feasibility Engine - Sayantan Pal</title>
   <style>
+    a.launch-btn {
+      display:inline-block;
+      padding:14px 32px;
+      background: linear-gradient(135deg, #5ec7b7, #3da89a);
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      font-weight:600;
+      box-shadow: 0 8px 25px rgba(94,199,183,0.25);
+      transition: all 0.25s ease;
+      margin-top:20px;
+    }
+    a.launch-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(94,199,183,0.35);
+    }
+
     a.back-link {
       display:inline-block;
       color:#5ec7b7;
@@ -53,7 +76,9 @@
     .result { line-height: 1.8; }
   </style>
 </head>
-<body>
+<body class="dark-arshia max-width-d">
+  <main id="main" class="main-2">
+    <section class="section py-6">
   <div class="container">
     <a href="index.html#tools" class="back-link">← Back to Portfolio</a>
     <h1 style="color:#5ec7b7;">VORTEX Product Feasibility Engine</h1>
@@ -200,5 +225,11 @@
       document.getElementById('resultStep').classList.add('active');
     }
   </script>
+    </section>
+  </main>
+
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/arshia.js"></script>
 </body>
 </html>
