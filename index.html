@@ -42,6 +42,71 @@
       href="assets/colors/sky-blue.css"
       id="option-color"
     />
+
+    <style>
+      /* VORTEX Product Feasibility Engine */
+      .engine-wrap {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .engine-intro {
+        margin-bottom: 32px;
+      }
+      .engine-intro p {
+        max-width: 640px;
+      }
+      .vortex-engine-card {
+        padding: 28px;
+        border-radius: 1.25rem;
+        background: rgba(0, 0, 0, 0.18);
+      }
+      .vortex-engine-step {
+        display: none;
+      }
+      .vortex-engine-step.active {
+        display: block;
+      }
+      .vortex-engine-step h3,
+      .vortex-engine-step p,
+      .vortex-engine-result,
+      .vortex-engine-result strong {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      .vortex-engine-select {
+        width: 100%;
+        height: 44px;
+        border-radius: 8px;
+        padding: 8px 12px;
+        margin-top: 14px;
+        border: none;
+        outline: none;
+      }
+      .engine-controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+      .engine-controls .primary-button,
+      .vortex-engine-result .primary-button {
+        border: none;
+        cursor: pointer;
+      }
+      .engine-muted {
+        opacity: 0.78;
+      }
+      .vortex-engine-result {
+        line-height: 1.9;
+      }
+      .score-pill {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+        font-size: 14px;
+      }
+    </style>
   </head>
 
   <body class="dark-arshia max-width-d">
@@ -1401,29 +1466,113 @@
 
       <!-- Tools Start -->
       <section id="tools" class="section contact w-100">
-        <div class="container">
-          <h3 class="subtitle">Tools</h3>  
-          <h2>VORTEX Product Feasibility Engine</h2>
-          <p>
-            Get an instant engineering feasibility review before starting your hardware project.
-          </p>
-          <a href="feasibility-engine.html"
-             style="
-                display:inline-block;
-                padding:14px 32px;
-                background: linear-gradient(135deg, #5ec7b7, #3da89a);
-                color:#fff;
-                text-decoration:none;
-                border-radius:999px;
-                font-weight:600;
-                box-shadow: 0 8px 25px rgba(94,199,183,0.25);
-                transition: all 0.25s ease;
-                margin-top:20px;
-             "
-             onmouseover="this.style.transform='translateY(-2px)'"
-             onmouseout="this.style.transform='translateY(0)'">
-             Launch Engine
-          </a>
+        <div class="container engine-wrap">
+          <div class="engine-intro">
+            <h3 class="subtitle">Tools</h3>
+            <h2>VORTEX Product Feasibility Engine</h2>
+            <p class="engine-muted">
+              Get an instant engineering feasibility review before starting your hardware project.
+            </p>
+          </div>
+
+          <div class="vortex-engine-card">
+            <div class="vortex-engine-step active" id="engineStep1">
+              <h3>What are you building?</h3>
+              <select id="projectType" class="vortex-engine-select">
+                <option>IoT Device</option>
+                <option>Battery Product</option>
+                <option>Industrial Controller</option>
+                <option>Consumer Electronics</option>
+                <option>Sensor Node</option>
+                <option>Wearable</option>
+                <option>Smart Appliance</option>
+                <option>Prototype / Research</option>
+              </select>
+              <div class="engine-controls">
+                <button class="primary-button" type="button" onclick="engineNextStep(2)">Next</button>
+                <button class="primary-button" type="button" onclick="engineReset()">Reset</button>
+              </div>
+            </div>
+
+            <div class="vortex-engine-step" id="engineStep2">
+              <h3>Connectivity Requirement</h3>
+              <select id="connectivity" class="vortex-engine-select">
+                <option>None / Offline</option>
+                <option>Bluetooth LE</option>
+                <option>Wi-Fi</option>
+                <option>LoRa / LoRaWAN</option>
+                <option>GSM / GPRS</option>
+                <option>LTE Cat-M / NB-IoT</option>
+                <option>GPS / GNSS</option>
+                <option>RS485 / Modbus</option>
+                <option>CAN Bus</option>
+                <option>USB / PC Connected</option>
+              </select>
+              <div class="engine-controls">
+                <button class="primary-button" type="button" onclick="enginePrevStep(1)">Previous</button>
+                <button class="primary-button" type="button" onclick="engineNextStep(3)">Next</button>
+                <button class="primary-button" type="button" onclick="engineReset()">Reset</button>
+              </div>
+            </div>
+
+            <div class="vortex-engine-step" id="engineStep3">
+              <h3>Power Source</h3>
+              <select id="power" class="vortex-engine-select">
+                <option>USB</option>
+                <option>LiPo Battery</option>
+                <option>AC Mains</option>
+                <option>12V DC</option>
+                <option>24V DC</option>
+                <option>Solar</option>
+              </select>
+              <div class="engine-controls">
+                <button class="primary-button" type="button" onclick="enginePrevStep(2)">Previous</button>
+                <button class="primary-button" type="button" onclick="engineNextStep(4)">Next</button>
+                <button class="primary-button" type="button" onclick="engineReset()">Reset</button>
+              </div>
+            </div>
+
+            <div class="vortex-engine-step" id="engineStep4">
+              <h3>User Interface</h3>
+              <select id="ui" class="vortex-engine-select">
+                <option>None</option>
+                <option>LEDs + Buttons</option>
+                <option>Small Display</option>
+                <option>Touchscreen</option>
+                <option>Mobile App</option>
+              </select>
+              <div class="engine-controls">
+                <button class="primary-button" type="button" onclick="enginePrevStep(3)">Previous</button>
+                <button class="primary-button" type="button" onclick="engineNextStep(5)">Next</button>
+                <button class="primary-button" type="button" onclick="engineReset()">Reset</button>
+              </div>
+            </div>
+
+            <div class="vortex-engine-step" id="engineStep5">
+              <h3>Deliverables Needed</h3>
+              <select id="deliverables" class="vortex-engine-select">
+                <option>Schematic + PCB</option>
+                <option>PCB + Firmware</option>
+                <option>Prototype Bring-up</option>
+                <option>Manufacturing Support</option>
+                <option>Full Product Development</option>
+              </select>
+              <div class="engine-controls">
+                <button class="primary-button" type="button" onclick="enginePrevStep(4)">Previous</button>
+                <button class="primary-button" type="button" onclick="engineGenerateResult()">Generate Assessment</button>
+                <button class="primary-button" type="button" onclick="engineReset()">Reset</button>
+              </div>
+            </div>
+
+            <div class="vortex-engine-step" id="engineResultStep">
+              <h3>Project Assessment</h3>
+              <div id="engineResult" class="vortex-engine-result"></div>
+              <div class="engine-controls">
+                <button class="primary-button" type="button" onclick="enginePrevStep(5)">Previous</button>
+                <button class="primary-button" type="button" onclick="engineReset()">Reset</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <!--  Tools End  -->
@@ -1494,6 +1643,154 @@
     <!-- typed -->
     <script src="assets/js/typed.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+
+    <script>
+      function engineShowStep(stepId) {
+        document.querySelectorAll('.vortex-engine-step').forEach(function (step) {
+          step.classList.remove('active');
+        });
+        document.getElementById(stepId).classList.add('active');
+      }
+
+      function engineNextStep(stepNumber) {
+        engineShowStep('engineStep' + stepNumber);
+      }
+
+      function enginePrevStep(stepNumber) {
+        engineShowStep('engineStep' + stepNumber);
+      }
+
+      function engineReset() {
+        document.querySelectorAll('#tools select').forEach(function (select) {
+          select.selectedIndex = 0;
+        });
+        document.getElementById('engineResult').innerHTML = '';
+        engineShowStep('engineStep1');
+      }
+
+      function engineGenerateResult() {
+        const project = document.getElementById('projectType').value;
+        const connectivity = document.getElementById('connectivity').value;
+        const power = document.getElementById('power').value;
+        const ui = document.getElementById('ui').value;
+        const deliverables = document.getElementById('deliverables').value;
+
+        let scores = {
+          attiny: 0,
+          esp32: 0,
+          nrf52: 0,
+          rp2040: 0
+        };
+
+        if (connectivity === 'None / Offline') scores.attiny += 40;
+        else scores.esp32 += 20;
+
+        if (connectivity === 'Bluetooth LE') scores.nrf52 += 55;
+        if (connectivity === 'Wi-Fi' || connectivity === 'USB / PC Connected') scores.esp32 += 50;
+        if (connectivity.includes('LoRa') || connectivity.includes('GSM') || connectivity.includes('LTE')) scores.esp32 += 35;
+        if (connectivity.includes('RS485') || connectivity.includes('CAN')) scores.rp2040 += 25;
+
+        if (project === 'Wearable' || project === 'Battery Product') scores.nrf52 += 35;
+        if (project === 'Sensor Node') scores.attiny += 20;
+        if (project === 'Industrial Controller') scores.rp2040 += 25;
+        if (project === 'Prototype / Research') scores.rp2040 += 30;
+
+        if (power === 'LiPo Battery' || power === 'Solar') {
+          scores.nrf52 += 25;
+          scores.attiny += 15;
+        }
+        if (power === 'AC Mains' || power === '12V DC' || power === '24V DC') {
+          scores.esp32 += 10;
+          scores.rp2040 += 10;
+        }
+
+        if (ui === 'None') scores.attiny += 15;
+        if (ui === 'LEDs + Buttons') scores.attiny += 10;
+        if (ui === 'Small Display') scores.rp2040 += 35;
+        if (ui === 'Touchscreen') scores.rp2040 += 45;
+        if (ui === 'Mobile App') scores.esp32 += 30;
+
+        const sortedScores = Object.entries(scores).sort(function (a, b) {
+          return b[1] - a[1];
+        });
+
+        const winner = sortedScores[0][0];
+        const mcuNames = {
+          attiny: 'ATtiny 1-Series',
+          esp32: 'Newer ESP32 Family',
+          nrf52: 'nRF52 Family',
+          rp2040: 'RP2040'
+        };
+
+        const reasons = [];
+        if (winner === 'attiny') reasons.push('simple control logic', 'low BOM cost', 'offline operation');
+        if (winner === 'esp32') reasons.push('connectivity support', 'OTA-ready ecosystem', 'fast IoT development');
+        if (winner === 'nrf52') reasons.push('battery efficiency', 'Bluetooth LE strength', 'wearable-friendly architecture');
+        if (winner === 'rp2040') reasons.push('UI/peripheral flexibility', 'rapid prototyping', 'strong GPIO capability');
+
+        let risk = connectivity === 'None / Offline' ? 42 : 62;
+        if (power === 'AC Mains') risk += 15;
+        if (power === '24V DC') risk += 8;
+        if (ui === 'Touchscreen') risk += 10;
+        if (connectivity.includes('GSM') || connectivity.includes('LTE')) risk += 10;
+        if (deliverables === 'Manufacturing Support' || deliverables === 'Full Product Development') risk += 6;
+        if (risk > 95) risk = 95;
+
+        const complexity = risk > 75 ? 'High' : risk > 55 ? 'Medium' : 'Low';
+        const pcbLayers = (connectivity === 'None / Offline' && (ui === 'None' || ui === 'LEDs + Buttons')) ? '2 Layers' : '4 Layers Recommended';
+
+        const keyRisks = [];
+        if (connectivity !== 'None / Offline') keyRisks.push('RF layout');
+        if (power === 'AC Mains') keyRisks.push('mains safety');
+        if (power === 'LiPo Battery' || power === 'Solar') keyRisks.push('battery protection');
+        if (ui === 'Touchscreen' || ui === 'Small Display') keyRisks.push('UI integration');
+        if (keyRisks.length === 0) keyRisks.push('basic design validation');
+
+        const resultHTML = `
+          <span class="score-pill bg-base-color">${complexity} Complexity</span><br>
+          <strong>Recommended MCU:</strong> ${mcuNames[winner]}<br>
+          <strong>Why:</strong> ${reasons.join(', ')}<br>
+          <strong>Project Risk Score:</strong> ${risk}/100<br>
+          <strong>Project Type:</strong> ${project}<br>
+          <strong>Connectivity:</strong> ${connectivity}<br>
+          <strong>Power Architecture:</strong> ${power}<br>
+          <strong>User Interface:</strong> ${ui}<br>
+          <strong>Deliverables:</strong> ${deliverables}<br>
+          <strong>Suggested PCB:</strong> ${pcbLayers}<br>
+          <strong>Key Risks:</strong> ${keyRisks.join(', ')}<br><br>
+          <button id="engineWhatsAppBtn" class="primary-button" type="button">Send on WhatsApp</button>
+        `;
+
+        document.getElementById('engineResult').innerHTML = resultHTML;
+
+        const message = encodeURIComponent(`Hi Sayantan,
+
+I completed the VORTEX Product Feasibility Engine.
+
+Recommended MCU: ${mcuNames[winner]}
+Why: ${reasons.join(', ')}
+
+Project Type: ${project}
+Connectivity: ${connectivity}
+Power Architecture: ${power}
+User Interface: ${ui}
+Deliverables: ${deliverables}
+
+Risk Score: ${risk}/100
+Complexity: ${complexity}
+Suggested PCB: ${pcbLayers}
+Key Risks: ${keyRisks.join(', ')}
+
+I'd like to discuss this project further.`);
+
+        document.getElementById('engineWhatsAppBtn').addEventListener('click', function () {
+          window.open('https://wa.me/917908021510?text=' + message, '_blank');
+        });
+
+        engineShowStep('engineResultStep');
+      }
+    </script>
 
     <!--  Arshia Js  -->
     <script src="assets/js/arshia.js"></script>
