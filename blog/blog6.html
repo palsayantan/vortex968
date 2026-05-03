@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" class="max-width-d">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Thermal Management - Sayantan Pal</title>
+    <meta name="description" content="Strategies for heat dissipation in compact PCB designs." />
+    <meta name="author" content="Sayantan Pal" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <!-- Bootstrap Icon -->
+    <link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
+    <!--  Custom Style Css  -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!--  Color Css  -->
+    <link rel="stylesheet" href="../assets/colors/sky-blue.css" id="option-color" />
+</head>
+
+<body class="blog-single-page dark-arshia max-width-d">
+
+    <div id="line-loader">
+        <div class="middle-line"></div>
+    </div>
+
+    <!--   Right Side   -->
+    <div class="right-side d-none d-lg-block">
+        <div id="date"></div>
+        <div class="social-box">
+            <div class="follow-label"><span>Follow Me</span></div>
+            <div class="social d-none d-lg-block">
+                <a href="https://github.com/palsayantan" class="d-inline-block" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://www.youtube.com/c/electropoint4u" class="d-inline-block" target="_blank"><i class="bi bi-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--  Left Side   -->
+    <div class="left-side nav-close">
+        <div class="menu-content-align">
+            <h1 class="mt-1">Sayantan Pal</h1>
+            <p class="text-muted mb-0">Hardware Developer</p>
+        </div>
+        <div class="menu-align">
+            <ul class="list-group menu text-center" id="menu">
+                <li class="list-group-item"><a href="../index.html#hero"><i class="bi bi-house"></i><span>home</span></a></li>
+                <li class="list-group-item"><a href="../index.html#blog"><i class="bi bi-book"></i><span>blog</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--  Main Content  -->
+    <main id="main" class="main-2">
+        <section id="blog-single" class="blog-single section py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mt-3">
+                        <h2 class="header-title">Thermal Management in Compact PCB Layouts</h2>
+                    </div>
+                </div>
+                <div class="row row-sticky">
+                    <div class="col-12 post-content">
+                        <div class="single-post">
+                            <p class="quotation fs-5">
+                                As devices shrink, power density rises. In a compact 25x22 mm PCB, 
+                                heat can become a destructive force, degrading component performance 
+                                and reducing the lifespan of the device. Managing thermals is not just 
+                                about cooling—it is about strategic heat transport within the board.
+                            </p>
+
+                            <h4 class="text-primary mt-5">The PCB as a Heat Sink</h4>
+                            <p class="fs-5">
+                                In small designs, you often don't have room for bulky mechanical heat sinks. 
+                                Therefore, the PCB substrate and copper layers must act as the primary 
+                                cooling system.
+                            </p>
+                            <p>
+                                FR4 is a poor thermal conductor, but copper is excellent. Large copper 
+                                planes—specifically ground planes—act as a "heat spreader," pulling 
+                                localized heat away from hot components like power regulators or 
+                                microcontrollers and distributing it across the entire surface area.
+                            </p>
+
+                            <h4 class="text-primary mt-5">Thermal Vias and Stitching</h4>
+                            <p class="fs-5">
+                                When a component generates significant heat on the top layer, thermal 
+                                vias are used to transport that energy to the internal or bottom copper 
+                                layers.
+                            </p>
+                            <ul class="px-3">
+                                <li><strong>Via Placement:</strong> Place vias directly under the thermal pad of the IC (e.g., QFN or DFN packages).[cite: 1]</li>
+                                <li><strong>Via Density:</strong> An array of smaller vias (e.g., 0.3mm) is often more efficient than a single large via due to increased copper surface area.[cite: 1]</li>
+                                <li><strong>Solder Mask:</strong> Keep thermal vias open (not covered by solder mask) to allow for better heat dissipation into the air.[cite: 1]</li>
+                            </ul>
+
+                            <h4 class="text-primary mt-5">Component Placement for Thermals</h4>
+                            <p class="fs-5">
+                                Strategic placement can prevent "hot spots" that cause thermal throttling 
+                                in sensitive SoCs like the ESP32.[cite: 1]
+                            </p>
+                            <p>
+                                Keep heat-generating components away from temperature-sensitive parts, 
+                                such as crystal oscillators or high-precision analog-to-digital 
+                                converters (ADCs). If a power regulator and a microcontroller are 
+                                both heat sources, separate them as much as the small board dimensions 
+                                allow.[cite: 1]
+                            </p>
+
+                            <h4 class="text-primary mt-5">Copper Weight and Trace Width</h4>
+                            <p class="fs-5">
+                                Increasing your copper weight from 1oz to 2oz can significantly 
+                                improve thermal performance, though it may increase manufacturing costs. 
+                                For power-heavy traces, wider copper not only reduces resistance-based 
+                                heating ($I^2R$ losses) but also provides more mass to absorb 
+                                thermal energy.[cite: 1]
+                            </p>
+
+                            <div class="mt-5 mb-5">
+                                <p class="quotation">
+                                    Engineering Insight: Always verify your thermal assumptions with 
+                                    a thermal camera during the prototyping phase. A simulation might 
+                                    say you're safe, but real-world airflow and enclosure constraints 
+                                    can change everything.[cite: 1]
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--  Scripts  -->
+    <script src="../assets/js/jquery-3.4.1.min.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/arshia.js"></script>
+</body>
+
+</html>

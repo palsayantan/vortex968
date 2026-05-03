@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="max-width-d">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Signal Integrity - Sayantan Pal</title>
+    <meta name="description" content="A deep dive into trace impedance and signal integrity in PCB design." />
+    <meta name="author" content="Sayantan Pal" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <!-- Bootstrap Icon -->
+    <link rel="stylesheet" href="../assets/css/bootstrap-icons.css">
+    <!--  Custom Style Css  -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!--  Color Css  -->
+    <link rel="stylesheet" href="../assets/colors/sky-blue.css" id="option-color" />
+</head>
+
+<body class="blog-single-page dark-arshia max-width-d">
+
+    <div id="line-loader">
+        <div class="middle-line"></div>
+    </div>
+
+    <!--   Right Side   -->
+    <div class="right-side d-none d-lg-block">
+        <div id="date"></div>
+        <div class="social-box">
+            <div class="follow-label"><span>Follow Me</span></div>
+            <div class="social d-none d-lg-block">
+                <a href="https://github.com/palsayantan" class="d-inline-block" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://www.youtube.com/c/electropoint4u" class="d-inline-block" target="_blank"><i class="bi bi-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--  Left Side   -->
+    <div class="left-side nav-close">
+        <div class="menu-content-align">
+            <h1 class="mt-1">Sayantan Pal</h1>
+            <p class="text-muted mb-0">Hardware Developer</p>
+        </div>
+        <div class="menu-align">
+            <ul class="list-group menu text-center" id="menu">
+                <li class="list-group-item"><a href="../index.html#hero"><i class="bi bi-house"></i><span>home</span></a></li>
+                <li class="list-group-item"><a href="../index.html#blog"><i class="bi bi-book"></i><span>blog</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--  Main Content  -->
+    <main id="main" class="main-2">
+        <section id="blog-single" class="blog-single section py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mt-3">
+                        <h2 class="header-title">Signal Integrity: Why Trace Impedance Matters</h2>
+                    </div>
+                </div>
+                <div class="row row-sticky">
+                    <div class="col-12 post-content">
+                        <div class="single-post">
+                            <p class="quotation fs-5">
+                                In the world of high-speed digital design, a trace is no longer just a simple 
+                                connection; it is a transmission line. When signal rise times are faster 
+                                than the time it takes for the signal to travel across the board, the 
+                                impedance of that trace becomes the deciding factor between a functional 
+                                system and a pile of electronic noise.
+                            </p>
+
+                            <h4 class="text-primary mt-5">The Fundamentals of Controlled Impedance</h4>
+                            <p class="fs-5">
+                                Controlled impedance is the matching of substrate material properties and 
+                                trace dimensions with locations to ensure that the transmitted signal 
+                                reaches its destination without reflecting back to the source.
+                            </p>
+                            <p>
+                                Any change in the cross-sectional geometry of a trace creates an impedance 
+                                discontinuity. These "bumps" in the signal path cause reflections that 
+                                distort the waveform, leading to data errors in high-speed protocols 
+                                like USB 3.0 or PCIe.
+                            </p>
+
+                            <h4 class="text-primary mt-5">Microstrip vs. Stripline Configurations</h4>
+                            <p class="fs-5">
+                                How you stack your PCB layers determines how electromagnetic fields travel. 
+                                There are two primary configurations for routing high-speed signals:
+                            </p>
+                            <ul class="px-3">
+                                <li><strong>Microstrip:</strong> A trace routed on an outer layer over a reference plane. It is easier to route but more susceptible to EMI and external radiation.</li>
+                                <li><strong>Stripline:</strong> A trace sandwiched between two ground/power planes. This provides superior shielding and lower EMI but requires more complex PCB stack-ups.</li>
+                                <li><strong>Coplanar Waveguide:</strong> A trace with ground pours on the same layer, offering excellent isolation for RF signals like those used in nRF52 series SoCs.</li>
+                            </ul>
+
+                            <h4 class="text-primary mt-5">The Impact of PCB Stack-up</h4>
+                            <p class="fs-5">
+                                Impedance is not just about trace width; it is heavily dependent on the 
+                                distance between the signal layer and its reference plane (dielectric height). 
+                                A 4-layer stack-up provides consistent dielectric thickness, allowing for 
+                                repeatable impedance calculations.
+                            </p>
+                            <p>
+                                When designing for specific impedance (e.g., 50 Ohms for RF or 90 Ohms 
+                                differential for USB), you must work closely with your fabricator. 
+                                Variations in Prepreg and Core thickness can shift your impedance by 
+                                10% or more, ruining high-speed signal timing.
+                            </p>
+
+                            <div class="mt-5 mb-5">
+                                <p class="quotation">
+                                    Design Tip: Avoid 90-degree corners. Use 45-degree bends or rounded 
+                                    corners to maintain a constant trace width through the turn, 
+                                    minimizing impedance changes and signal reflections.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--  Scripts  -->
+    <script src="../assets/js/jquery-3.4.1.min.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/arshia.js"></script>
+</body>
+
+</html>
