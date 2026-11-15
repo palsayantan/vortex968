@@ -2195,3 +2195,31 @@ body.dark-arshia , .dark-arshia .ajax-page-content{
     padding: 5px 0px;
   }
 }
+
+/* Fix desktop and ultrawide layout */
+@media (min-width: 1600px) {
+
+    html.max-width-d,
+    body.max-width-d {
+        max-width: none;
+        width: 100%;
+    }
+
+    #main {
+        left: calc(5% + 95px);
+        width: calc(90% - 190px);
+        max-width: none;
+    }
+
+    #main > section:not(:first-child):not(:last-child) {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #main > section .container {
+        width: 100%;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
