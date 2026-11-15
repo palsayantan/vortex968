@@ -2196,38 +2196,3 @@ body.dark-arshia , .dark-arshia .ajax-page-content{
   }
 }
 
-
-/* CAP ULTRAWIDE LAYOUT AT 2560px */
-
-@media (min-width: 2561px) {
-
-    html.max-width-d {
-        max-width: none !important;
-        width: 100% !important;
-    }
-
-    body.max-width-d {
-        width: 2560px !important;
-        max-width: 2560px !important;
-        left: 0 !important;
-        right: 0 !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    /* Keep sidebars within the capped body */
-    .left-side,
-    .right-side {
-        position: absolute !important;
-    }
-
-    /* Center panel relative to capped width */
-    #main {
-        left: calc(5% + 95px) !important;
-        width: calc(90% - 190px) !important;
-    }
-
-    #main > section:not(:first-child):not(:last-child) {
-        width: 100% !important;
-    }
-}
